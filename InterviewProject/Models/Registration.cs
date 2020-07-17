@@ -19,7 +19,7 @@ namespace InterviewProject.Models
         [Required(ErrorMessage = "Please enter your batche id")]
         public int BatchesID { get; set; }
         public virtual Batches Batches { get; set; }
-        [Required(ErrorMessage = "Please enter a valid phone number"), Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Please enter your phone number"), Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }
 }
