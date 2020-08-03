@@ -7,9 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InterviewProject.Data;
 using InterviewProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InterviewProject.Controllers
-{
+{              [Authorize]
     public class RegistrationsController : Controller
     {
         private readonly ManagementDbContext _context;
@@ -45,6 +46,7 @@ namespace InterviewProject.Controllers
 
             return View(registration);
         }
+
 
         // GET: Registrations/Create
         public IActionResult Create()
@@ -122,7 +124,7 @@ namespace InterviewProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BatchesID"] = new SelectList(_context.BatchTable, "Id", "Id", registration.BatchesID);
+            ViewData["BatchesID"] = new SelectList(_context.BatchTable, "Id", "Name", registration.BatchesID);
             ViewData["CoursesID"] = new SelectList(_context.CourseTable, "Id", "Name", registration.CoursesID);
             return View(registration);
         }
